@@ -3,10 +3,7 @@ pipeline {
     stages {
         stage('Test GitHub OIDC Clone') {
             steps {
-                    bat '''
-                        echo Authenticating with GitHub using OIDC...
-                        python python_print.py
-                    '''
+                    bat 'python python_print.py'
             }
         }
     }
