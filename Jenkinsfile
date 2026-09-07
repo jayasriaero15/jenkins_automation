@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Test GitHub OIDC Clone') {
+        stage('checkout') {
             steps {
                     bat 'python python_print.py'
             }
