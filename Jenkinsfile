@@ -1,12 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Run Python') {
+        stage('Run Python with GitHub OIDC') {
             steps {
-                // Use OIDC token for GitHub authentication
                 withCredentials([string(credentialsId: 'github-oidc-2', variable: 'ID_TOKEN')]) {
-                    sh '''
-                        git config --global http.extraHeader "Authorization: Bearer $ID_TOKEN"
+                    bat '''
+                        git config --global http.extraHeader "Authorization: Bearer %ID_TOKEN%"
                         git clone https://github.com/jayasriaero15/jenkins_automation.git
                         python python_print.py
                     '''
